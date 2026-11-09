@@ -1,0 +1,17 @@
+.DS_Store
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+.swiftpm/
+.env
+.env.*
+GoogleService-Info.plist
+*.p8
+*.p12
+*.mobileprovision
+fastlane/report.xml
+fastlane/screenshots/**/*.png
+.build/
