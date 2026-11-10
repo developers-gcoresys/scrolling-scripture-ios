@@ -145,12 +145,17 @@ canonical source when it changes:
 tools/sync-content.sh ../scrolling-scripture-android/app/src/bible/assets
 ```
 
+Run `tools/check-content.sh` to fail if the iOS bundle drifts from the canonical
+Android content. `swift run CoreChecks` also loads the bundled edition and
+verifies its book/chapter/verse counts.
+
 Attribution is in `App/Resources/ATTRIBUTION.md`. Do not add an edition until
 its rights and editorial review are complete.
 
 ## Verification before release
 
 - [ ] `swift run CoreChecks` passes.
+- [ ] `tools/check-content.sh` passes against the Android repo.
 - [ ] `xcodebuild -scheme ScrollingBible -destination 'generic/platform=iOS Simulator' build` succeeds.
 - [ ] Backend `npm test` passes.
 - [ ] StoreKit sandbox purchase, renewal, cancel, and restore all produce the

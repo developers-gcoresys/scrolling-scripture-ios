@@ -68,4 +68,23 @@ let entitlement = try ProEntitlement.decode(from: entitlementJSON)
 expect(entitlement.isActivePro(at: Date(timeIntervalSince1970: 1_780_000_000)), "entitlement should be active before expiry")
 expect(!entitlement.isActivePro(at: Date(timeIntervalSince1970: 1_900_000_000)), "entitlement should expire")
 
+// Guard against a truncated or silently drifted bundled edition. If this check
+// fails after an intentional content update, review the text and update counts.
+let bundledEditionURL = URL(fileURLWithPath: "../App/Resources/world_english_bible.json")
+if FileManager.default.fileExists(atPath: bundledEditionURL.path) {
+    let bundled = try ScriptureLibrary.load(contentsOf: bundledEditionURL)
+    expect(bundled.books.count == 66, "bundled edition should have 66 books")
+    expect(bundled.books.first?.name == "Genesis", "bundled edition should start with Genesis")
+    expect(bundled.books.last?.name == "Revelation", "bundled edition should end with Revelation")
+    let chapters = bundled.books.reduce(0) { $0 + $1.chapters.count }
+    let verses = bundled.books.reduce(0) { total, book in
+        total + book.chapters.reduce(0) { $0 + $1.verses.count }
+    }
+    expect(chapters == 1189, "bundled edition should have 1189 chapters")
+    expect(verses == 31103, "bundled edition should have 31103 verses")
+    expect(!bundled.books.contains { $0.chapters.contains { $0.verses.contains { $0.text.contains("|strong=") } } }, "inline Strong's markup should be removed")
+} else {
+    print("Skipping bundled-edition check: run from ScriptureCore/ with App/Resources present.")
+}
+
 print("ScriptureCore checks passed")
