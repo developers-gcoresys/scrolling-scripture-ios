@@ -44,6 +44,7 @@ struct RootView: View {
         .task {
             model.start()
             await pro.refreshEntitlement()
+            await DailyVerseNotifier.refreshIfEnabled()
         }
     }
 }

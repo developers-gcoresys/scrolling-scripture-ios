@@ -24,4 +24,11 @@ if [[ $status -eq 0 ]]; then
 else
   echo "Run tools/sync-content.sh to update the bundle." >&2
 fi
+
+if command -v node >/dev/null 2>&1; then
+  node "$ROOT/tools/build-widget-verses.mjs" --check || status=1
+else
+  echo "Skipping widget-verse drift check: node not found" >&2
+fi
+
 exit $status

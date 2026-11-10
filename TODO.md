@@ -10,8 +10,9 @@
 - [ ] Create `pro_monthly` and `pro_yearly` subscriptions in App Store Connect.
 - [ ] Create the App Store Server API key and set `APP_STORE_ISSUER_ID`,
       `APP_STORE_KEY_ID`, and `APP_STORE_PRIVATE_KEY` in `gcoreapps-backend`.
-- [ ] Add App Store Server Notifications V2 to the backend so renewals/refunds
-      update without an app launch.
+- [x] Backend endpoint for App Store Server Notifications V2.
+- [ ] Register the notification URL (with `APP_STORE_NOTIFICATION_TOKEN`) in
+      App Store Connect so renewals/refunds update without an app launch.
 - [ ] Replace Google test ad IDs with production AdMob iOS app/banner/interstitial
       IDs, and configure the UMP privacy message.
 - [ ] Run a full sandbox purchase/restore/cancel/refund pass.
@@ -22,9 +23,11 @@
 ## Next features
 
 - [ ] Additional scripture editions (only after rights and editorial review).
-- [ ] Offline Pro packs using the backend's `downloadProExplanationPack`.
-- [ ] Lock-screen/home-screen verse widgets (WidgetKit).
-- [ ] Daily verse notifications.
+- [x] Offline Pro packs using the backend's `downloadProExplanationPack`
+      (hidden behind `AppFeatureFlags.explanationsEnabled` until content review).
+- [x] Home-screen verse widgets (WidgetKit) using a generated verse rotation.
+- [x] Daily verse notifications (8:00, 30-day rolling window).
+- [x] Privacy manifest (`App/Resources/PrivacyInfo.xcprivacy`).
 - [ ] Share-card image export.
 - [ ] Better accessibility labels and Dynamic Type audit.
 

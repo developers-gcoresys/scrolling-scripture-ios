@@ -54,6 +54,7 @@ targets:
         product: GoogleMobileAds
       - package: GoogleMobileAds
         product: UserMessagingPlatform
+      - target: ScriptureWidget
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.gcoreapps.scrollingbible
@@ -68,3 +69,16 @@ targets:
         config: Debug
       archive:
         config: Release
+
+  ScriptureWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: App/Widget
+      - path: App/Resources/widget_verses.json
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.gcoreapps.scrollingbible.widget
+        INFOPLIST_FILE: App/Widget/Info.plist
+        TARGETED_DEVICE_FAMILY: "1"
+        SKIP_INSTALL: YES

@@ -26,16 +26,19 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var appleNonce = ""
     @State private var showingDeleteAccount = false
+    @State private var dailyVerseEnabled = DailyVerseNotifier.isEnabled
 
     var body: some View {
         NavigationStack {
             Form {
                 proSection
                 readingSection
+                notificationsSection
                 privacySection
                 aboutSection
             }
             .navigationTitle("Settings")
+            .task { await DailyVerseNotifier.refreshIfEnabled() }
             .alert("Delete account?", isPresented: $showingDeleteAccount) {
                 Button("Cancel", role: .cancel) {}
                 Button("Delete account", role: .destructive) {
@@ -188,6 +191,28 @@ struct SettingsView: View {
     }
 
     @ViewBuilder
+    private var notificationsSection: some View {
+        Section("Notifications") {
+            Toggle("Verse of the day at 8:00", isOn: $dailyVerseEnabled)
+                .onChange(of: dailyVerseEnabled) { _, enabled in
+                    Task {
+                        if enabled {
+                            let granted = await DailyVerseNotifier.enable()
+                            if !granted {
+                                dailyVerseEnabled = false
+                                pro.message = "Notifications are disabled for Scrolling Bible in iOS Settings."
+                            }
+                        } else {
+                            await DailyVerseNotifier.disable()
+                        }
+                    }
+                }
+            Text("Uses the same verse rotation as the home-screen widget. You can turn it off here or in iOS Settings.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+        }
+    }
+
     private var privacySection: some View {
         Section("Privacy") {
             if ads.privacyOptionsRequired {

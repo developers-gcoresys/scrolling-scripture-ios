@@ -16,6 +16,8 @@ jobs:
       - name: Shared core checks
         working-directory: ScriptureCore
         run: swift run CoreChecks
+      - name: Widget verse drift check
+        run: node tools/build-widget-verses.mjs --check
       - name: Install XcodeGen
         run: brew install xcodegen
       - name: Regenerate project

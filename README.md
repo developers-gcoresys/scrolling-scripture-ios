@@ -136,6 +136,20 @@ never load ads.
 Configure the UMP privacy message in AdMob. The settings screen exposes
 **Ad privacy options** when UMP requires it.
 
+## Widgets and notifications
+
+The `ScriptureWidget` app extension shows a verse-of-the-day widget in small,
+medium, and large sizes. It reads `App/Resources/widget_verses.json`, a compact
+rotation generated from the canonical edition, rather than the full 4.6 MB text.
+Regenerate it with `node tools/build-widget-verses.mjs`; `tools/check-content.sh`
+and CI fail when it drifts.
+
+`App/Sources/DailyVerse.swift` schedules 30 days of 8:00 local notifications from
+the same rotation and refreshes the window at launch and whenever Settings opens.
+The toggle lives in Settings → Notifications. Each extension has its own bundle
+ID (`com.gcoreapps.scrollingbible.widget`); use a wildcard or explicit App ID in
+the Apple Developer portal so it is provisioned with the app.
+
 ## Content
 
 The bundled `App/Resources/world_english_bible.json` is copied from the Android

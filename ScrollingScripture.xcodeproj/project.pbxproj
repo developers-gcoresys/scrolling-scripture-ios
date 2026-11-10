@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		16C572201B4394944AE9DB41 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DAEA3AC77B256D5B50FD867D /* PrivacyInfo.xcprivacy */; };
+		16FF75217D1C304269BA315B /* DailyVerse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8920093933BEF1A4E18B4 /* DailyVerse.swift */; };
 		1B68985A6756F004BC7FE287 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 774A281075CE9E42E409DFD1 /* GoogleMobileAds */; };
+		1DF898FD713960241967D54B /* widget_verses.json in Resources */ = {isa = PBXBuildFile; fileRef = 889EC92D03C2D84BA4571F71 /* widget_verses.json */; };
 		35571B4B3D56738CA5872052 /* ScrollingBibleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B0EA1398C89455A54271D4 /* ScrollingBibleApp.swift */; };
 		376DC625ED8FBFC72D7C75E1 /* FirebaseRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C53B3787F453B39C3C2D9DA /* FirebaseRuntime.swift */; };
 		438F002CD9E154FA9216904F /* ReaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E49079B0A01198DD603048 /* ReaderModel.swift */; };
 		447F468C66818E3433F0991E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = BDC169D9E4512A8821F0CA19 /* GoogleSignIn */; };
+		5976C5DA8E183C663364EB37 /* widget_verses.json in Resources */ = {isa = PBXBuildFile; fileRef = 889EC92D03C2D84BA4571F71 /* widget_verses.json */; };
 		71DFDF97D104EF7B48DD89B4 /* world_english_bible.json in Resources */ = {isa = PBXBuildFile; fileRef = E35B1260A64E968C0F0CD8EF /* world_english_bible.json */; };
 		7917B6AE87AF09D2762BA5E2 /* LibraryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63CB8D3C00D34E617BB261A /* LibraryViews.swift */; };
 		7C9F7EBAD39BD8F11479ACDF /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 679FAE389EA6A4C1DE0400BC /* FirebaseAppCheck */; };
+		7D91BE046B3E478C87EC9E48 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1302CD6424FAB310B4E14DD3 /* FeatureFlags.swift */; };
 		8201218B56BD1D1AA1C363D6 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = AB24160F15158814FBD8EF4E /* Configuration.storekit */; };
 		83C3F906815E9D3FB9BD641B /* ATTRIBUTION.md in Resources */ = {isa = PBXBuildFile; fileRef = CB44BD7DC76C15777922E19E /* ATTRIBUTION.md */; };
 		850483A74DBCB901C5F3F50F /* ReaderScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F18640CCDD389BB0ACF0511 /* ReaderScreen.swift */; };
 		91A6A77DD64B7FE104CD4683 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = AC9CDE01532A4F3A06AAC800 /* FirebaseCore */; };
 		93A29758600952F59159A653 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A3450B6A8B1CEABED44C2 /* SettingsView.swift */; };
+		9F355BD9A83AEEA0D55779DF /* ScriptureWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28428600D6DA8D08A3E03CE /* ScriptureWidget.swift */; };
 		B84BC4F89C9772734A085E3C /* ScriptureCore in Frameworks */ = {isa = PBXBuildFile; productRef = EBB4B2596FF926F25A7A2A9F /* ScriptureCore */; };
+		B8BB550FFD301D1C392AA869 /* ScriptureWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7DE8C7E4E764520DC8D5E764 /* ScriptureWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAC12BFB69BF5C808318F1A1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F67336EA0475AFF2C5076903 /* FirebaseAuth */; };
 		CC1EE1AE03ED5B4F90E92E4F /* ProManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA63D2F16C797C3B5DA96AD /* ProManager.swift */; };
 		D11555427B8727AF41DAE870 /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E9A85927D4FBB2C0790A3F /* AdsManager.swift */; };
@@ -30,17 +36,47 @@
 		FE363D1B484759F7B99069E0 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = A7ADC11B7F5BE36B2FB957AC /* FirebaseFunctions */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		40E8AAA4E6B8F5FDD78D056E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2B462D0838170DAF396EFB6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3EDF706933F812395E3029AE;
+			remoteInfo = ScriptureWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C29C59DAC40F18F3EB164FA /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B8BB550FFD301D1C392AA869 /* ScriptureWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		080BD2E81EB23707E07BF198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0BA63D2F16C797C3B5DA96AD /* ProManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProManager.swift; sourceTree = "<group>"; };
 		0F388E3034200EFB9489562E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1302CD6424FAB310B4E14DD3 /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		2C53B3787F453B39C3C2D9DA /* FirebaseRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRuntime.swift; sourceTree = "<group>"; };
+		38E8920093933BEF1A4E18B4 /* DailyVerse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVerse.swift; sourceTree = "<group>"; };
 		42B0EA1398C89455A54271D4 /* ScrollingBibleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingBibleApp.swift; sourceTree = "<group>"; };
 		4F18640CCDD389BB0ACF0511 /* ReaderScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderScreen.swift; sourceTree = "<group>"; };
 		75E49079B0A01198DD603048 /* ReaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderModel.swift; sourceTree = "<group>"; };
 		79173E8E74278EDAFC9D438A /* ScrollingBible.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ScrollingBible.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE8C7E4E764520DC8D5E764 /* ScriptureWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ScriptureWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		889EC92D03C2D84BA4571F71 /* widget_verses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = widget_verses.json; sourceTree = "<group>"; };
 		AB24160F15158814FBD8EF4E /* Configuration.storekit */ = {isa = PBXFileReference; path = Configuration.storekit; sourceTree = "<group>"; };
 		C1E9A85927D4FBB2C0790A3F /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
 		C24A3450B6A8B1CEABED44C2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C28428600D6DA8D08A3E03CE /* ScriptureWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureWidget.swift; sourceTree = "<group>"; };
 		CB44BD7DC76C15777922E19E /* ATTRIBUTION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ATTRIBUTION.md; sourceTree = "<group>"; };
 		D2DBC39A78D8E99C73459EB5 /* ScriptureCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ScriptureCore; path = ScriptureCore; sourceTree = SOURCE_ROOT; };
 		DAEA3AC77B256D5B50FD867D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -67,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12B653F341C069565342B676 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				080BD2E81EB23707E07BF198 /* Info.plist */,
+				C28428600D6DA8D08A3E03CE /* ScriptureWidget.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		1A6C60DD8D303365A3596F6D /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +136,7 @@
 				CB44BD7DC76C15777922E19E /* ATTRIBUTION.md */,
 				AB24160F15158814FBD8EF4E /* Configuration.storekit */,
 				DAEA3AC77B256D5B50FD867D /* PrivacyInfo.xcprivacy */,
+				889EC92D03C2D84BA4571F71 /* widget_verses.json */,
 				E35B1260A64E968C0F0CD8EF /* world_english_bible.json */,
 			);
 			path = Resources;
@@ -101,6 +147,7 @@
 			children = (
 				4EF9E01DB4153E9E59AFF455 /* Resources */,
 				A4AD1EA9561FB954EB634214 /* Sources */,
+				12B653F341C069565342B676 /* Widget */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -109,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				C1E9A85927D4FBB2C0790A3F /* AdsManager.swift */,
+				38E8920093933BEF1A4E18B4 /* DailyVerse.swift */,
+				1302CD6424FAB310B4E14DD3 /* FeatureFlags.swift */,
 				2C53B3787F453B39C3C2D9DA /* FirebaseRuntime.swift */,
 				F63CB8D3C00D34E617BB261A /* LibraryViews.swift */,
 				0BA63D2F16C797C3B5DA96AD /* ProManager.swift */,
@@ -123,6 +172,7 @@
 		F32AF65C42028535AE0C5407 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				7DE8C7E4E764520DC8D5E764 /* ScriptureWidget.appex */,
 				79173E8E74278EDAFC9D438A /* ScrollingBible.app */,
 			);
 			name = Products;
@@ -131,6 +181,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3EDF706933F812395E3029AE /* ScriptureWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C7B001CC11E5B82671D59E /* Build configuration list for PBXNativeTarget "ScriptureWidget" */;
+			buildPhases = (
+				AD4E9642A9D98EFFB032ED1B /* Sources */,
+				ED707FBD6A344504DD007549 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScriptureWidget;
+			packageProductDependencies = (
+			);
+			productName = ScriptureWidget;
+			productReference = 7DE8C7E4E764520DC8D5E764 /* ScriptureWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CC5570A8B77E3BF195F357F0 /* ScrollingBible */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56FF3977D857FFCC1473A62A /* Build configuration list for PBXNativeTarget "ScrollingBible" */;
@@ -138,10 +206,12 @@
 				6B5A9375D45367B1CDD7BD9D /* Sources */,
 				AE58A00B09957032649305B7 /* Resources */,
 				31BA88F92F76B6B51A00132B /* Frameworks */,
+				1C29C59DAC40F18F3EB164FA /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				275F573CD24FC0C8766B161C /* PBXTargetDependency */,
 			);
 			name = ScrollingBible;
 			packageProductDependencies = (
@@ -167,6 +237,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					3EDF706933F812395E3029AE = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
 					CC5570A8B77E3BF195F357F0 = {
 						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
@@ -194,6 +268,7 @@
 			projectRoot = "";
 			targets = (
 				CC5570A8B77E3BF195F357F0 /* ScrollingBible */,
+				3EDF706933F812395E3029AE /* ScriptureWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -207,7 +282,16 @@
 				FE32EE4AC0F37C62E24A81B7 /* Assets.xcassets in Resources */,
 				8201218B56BD1D1AA1C363D6 /* Configuration.storekit in Resources */,
 				16C572201B4394944AE9DB41 /* PrivacyInfo.xcprivacy in Resources */,
+				5976C5DA8E183C663364EB37 /* widget_verses.json in Resources */,
 				71DFDF97D104EF7B48DD89B4 /* world_english_bible.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ED707FBD6A344504DD007549 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DF898FD713960241967D54B /* widget_verses.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D11555427B8727AF41DAE870 /* AdsManager.swift in Sources */,
+				16FF75217D1C304269BA315B /* DailyVerse.swift in Sources */,
+				7D91BE046B3E478C87EC9E48 /* FeatureFlags.swift in Sources */,
 				376DC625ED8FBFC72D7C75E1 /* FirebaseRuntime.swift in Sources */,
 				7917B6AE87AF09D2762BA5E2 /* LibraryViews.swift in Sources */,
 				CC1EE1AE03ED5B4F90E92E4F /* ProManager.swift in Sources */,
@@ -229,9 +315,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD4E9642A9D98EFFB032ED1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F355BD9A83AEEA0D55779DF /* ScriptureWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		275F573CD24FC0C8766B161C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3EDF706933F812395E3029AE /* ScriptureWidget */;
+			targetProxy = 40E8AAA4E6B8F5FDD78D056E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2D3A23AD164EAB8278076B7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = App/Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gcoreapps.scrollingbible.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		40D9D398F4C71BD6638A83CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -337,6 +455,22 @@
 			};
 			name = Release;
 		};
+		D160CB73C7D64E4150299782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = App/Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gcoreapps.scrollingbible.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 		D5883AD3CF7E473A417861E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -402,6 +536,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		37C7B001CC11E5B82671D59E /* Build configuration list for PBXNativeTarget "ScriptureWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D160CB73C7D64E4150299782 /* Debug */,
+				2D3A23AD164EAB8278076B7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		56FF3977D857FFCC1473A62A /* Build configuration list for PBXNativeTarget "ScrollingBible" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
