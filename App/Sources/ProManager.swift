@@ -209,6 +209,27 @@ final class ProManager: NSObject, ObservableObject {
         message = "Signed out."
     }
 
+    /// Deletes the Firebase account and this app's server-side data. The App
+    /// Store subscription keeps billing until the user cancels it there, so the
+    /// UI must warn about that first.
+    func deleteAccount(localCleanup: @escaping () -> Void = {}) async {
+        guard configured, Auth.auth().currentUser != nil else {
+            message = "Sign in to delete your account."
+            return
+        }
+        busy = true
+        defer { busy = false }
+        do {
+            _ = try await functions().httpsCallable("deleteAccount").call(["appId": appId])
+            localCleanup()
+            try? Auth.auth().signOut()
+            apply(ProEntitlement.inactive)
+            message = "Your account and app data were deleted. Your App Store subscription is not canceled."
+        } catch {
+            message = "Account deletion could not be completed. Check your connection and try again."
+        }
+    }
+
     func manageSubscriptions() {
         guard let url = URL(string: "https://apps.apple.com/account/subscriptions") else { return }
         UIApplication.shared.open(url)

@@ -309,6 +309,14 @@ final class ReaderModel: ObservableObject {
         defaults.set(location.verseIndex, forKey: Keys.verseIndex)
     }
 
+    /// Removes device-only reader data when the user deletes their account.
+    func clearLocalReaderData() {
+        favorites = []
+        notes = [:]
+        defaults.removeObject(forKey: Keys.favorites)
+        defaults.removeObject(forKey: Keys.notes)
+    }
+
     private enum Keys {
         static let theme = "reader.theme"
         static let fontSize = "reader.fontSize"

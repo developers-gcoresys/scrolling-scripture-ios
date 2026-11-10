@@ -25,6 +25,7 @@ struct SettingsView: View {
     @EnvironmentObject private var ads: AdsManager
     @Environment(\.dismiss) private var dismiss
     @State private var appleNonce = ""
+    @State private var showingDeleteAccount = false
 
     var body: some View {
         NavigationStack {
@@ -35,6 +36,18 @@ struct SettingsView: View {
                 aboutSection
             }
             .navigationTitle("Settings")
+            .alert("Delete account?", isPresented: $showingDeleteAccount) {
+                Button("Cancel", role: .cancel) {}
+                Button("Delete account", role: .destructive) {
+                    Task { await pro.deleteAccount { model.clearLocalReaderData() } }
+                }
+            } message: {
+                Text(
+                    "This permanently deletes your sign-in, Pro entitlement, and synced data for every GCore app using this account. "
+                        + "Local notes and favorites on this device are also cleared. "
+                        + "Your App Store subscription is not canceled — cancel it in the App Store if you do not want to be billed again."
+                )
+            }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
@@ -65,6 +78,8 @@ struct SettingsView: View {
             if let email = pro.signedInEmail {
                 LabeledContent("Account", value: email)
                 Button("Sign out", role: .destructive) { pro.signOut() }
+                Button("Delete account…", role: .destructive) { showingDeleteAccount = true }
+                    .disabled(pro.busy)
             } else {
                 Button {
                     Task { await pro.signInWithGoogle() }
