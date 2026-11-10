@@ -13,6 +13,8 @@
 - [x] Backend endpoint for App Store Server Notifications V2.
 - [ ] Register the notification URL (with `APP_STORE_NOTIFICATION_TOKEN`) in
       App Store Connect so renewals/refunds update without an app launch.
+- [x] Stop all ad loading (banner + interstitial) while a server-verified Pro
+      entitlement is active.
 - [ ] Replace Google test ad IDs with production AdMob iOS app/banner/interstitial
       IDs, and configure the UMP privacy message.
 - [ ] Run a full sandbox purchase/restore/cancel/refund pass.
