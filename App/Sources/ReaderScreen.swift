@@ -11,7 +11,7 @@ struct ReaderScreen: View {
             ReaderTopBar()
             pager
             ReaderBottomBar()
-            if !pro.isPro && ads.consentReady {
+            if ads.adsEnabled && !pro.isPro && ads.consentReady {
                 Divider()
                 BannerAdView(unitID: ads.bannerUnitID)
                     .frame(height: 50)
@@ -19,6 +19,12 @@ struct ReaderScreen: View {
             }
         }
         .background(model.theme.background.ignoresSafeArea())
+        .onChange(of: pro.isPro) { _, isPro in
+            ads.setEnabled(!isPro)
+        }
+        .task {
+            ads.setEnabled(!pro.isPro)
+        }
         .sheet(isPresented: $model.showingBookPicker) {
             BookPickerView().environmentObject(model)
         }

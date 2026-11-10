@@ -8,6 +8,9 @@ final class AdsManager: NSObject, ObservableObject {
     @Published private(set) var consentReady = false
     @Published private(set) var privacyOptionsRequired = false
     @Published private(set) var lastError: String?
+    /// False while a server-verified Pro entitlement is active. No ad is
+    /// requested, loaded, or shown in that state.
+    @Published private(set) var adsEnabled = true
 
     let bannerUnitID: String
     let interstitialUnitID: String
@@ -53,8 +56,20 @@ final class AdsManager: NSObject, ObservableObject {
         }
     }
 
+    /// Stops all ad requests while Pro is active. Consent state is kept so the
+    /// privacy options form still works.
+    func setEnabled(_ enabled: Bool) {
+        guard adsEnabled != enabled else { return }
+        adsEnabled = enabled
+        if !enabled {
+            interstitial = nil
+        } else if consentReady {
+            loadInterstitial()
+        }
+    }
+
     func loadInterstitial() {
-        guard consentReady else { return }
+        guard adsEnabled, consentReady else { return }
         InterstitialAd.load(with: interstitialUnitID, request: Request()) { [weak self] ad, error in
             Task { @MainActor in
                 guard let self else { return }
@@ -72,7 +87,7 @@ final class AdsManager: NSObject, ObservableObject {
     /// Ads are never requested before UMP consent is available.
     @discardableResult
     func presentInterstitialIfAvailable() -> Bool {
-        guard consentReady, let ad = interstitial, let viewController = UIApplication.shared.topViewController else {
+        guard adsEnabled, consentReady, let ad = interstitial, let viewController = UIApplication.shared.topViewController else {
             return false
         }
         ad.present(fromRootViewController: viewController)

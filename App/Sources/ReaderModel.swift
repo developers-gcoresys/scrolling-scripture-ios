@@ -191,8 +191,8 @@ final class ReaderModel: ObservableObject {
         let isAdjacentPage = abs(updated.verseIndex - previous.verseIndex) == 1
         guard isAdjacentPage, !pro.isPro else { return }
         guard adSession.recordPageChange(at: Date()) else { return }
-        ads.presentInterstitialIfAvailable { [weak self] in
-            self?.adSession.markAdShown(at: Date())
+        if ads.presentInterstitialIfAvailable() {
+            adSession.markAdShown(at: Date())
         }
     }
 
