@@ -137,6 +137,25 @@ struct SettingsView: View {
                 Button("Manage subscription") { pro.manageSubscriptions() }
             }
 
+            if AppFeatureFlags.explanationsEnabled, pro.isPro {
+                LabeledContent(
+                    "Offline explanations",
+                    value: pro.offlinePackVersion.map { "\(pro.offlinePackCount) saved · v\($0)" } ?? "Not downloaded"
+                )
+                Button {
+                    Task { await pro.downloadExplanationPack() }
+                } label: {
+                    Label("Download offline explanations", systemImage: "arrow.down.circle")
+                }
+                .disabled(pro.busy)
+
+                if pro.offlinePackVersion != nil {
+                    Button("Remove offline explanations", role: .destructive) {
+                        pro.clearOfflineExplanations()
+                    }
+                }
+            }
+
             if let message = pro.message {
                 Text(message)
                     .font(.footnote)

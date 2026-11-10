@@ -315,6 +315,7 @@ final class ReaderModel: ObservableObject {
         notes = [:]
         defaults.removeObject(forKey: Keys.favorites)
         defaults.removeObject(forKey: Keys.notes)
+        OfflineExplanationStore.clear()
     }
 
     private enum Keys {

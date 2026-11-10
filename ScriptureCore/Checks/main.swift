@@ -68,6 +68,21 @@ let entitlement = try ProEntitlement.decode(from: entitlementJSON)
 expect(entitlement.isActivePro(at: Date(timeIntervalSince1970: 1_780_000_000)), "entitlement should be active before expiry")
 expect(!entitlement.isActivePro(at: Date(timeIntervalSince1970: 1_900_000_000)), "entitlement should expire")
 
+// Offline explanation pack round-trip in a temporary directory.
+let packDirectory = FileManager.default.temporaryDirectory
+    .appendingPathComponent("scripture-core-pack-\(UUID().uuidString)", isDirectory: true)
+defer { try? FileManager.default.removeItem(at: packDirectory) }
+let packItems = [
+    OfflineExplanation(reference: "John 3:16", explanation: "A concise explanation.", citations: ["John 3:14-15"]),
+    OfflineExplanation(reference: "Psalm 23:1", explanation: "Another explanation.", citations: [])
+]
+try OfflineExplanationStore.save(packItems, appId: "bible", packVersion: 3, directory: packDirectory)
+expect(OfflineExplanationStore.version(directory: packDirectory) == 3, "pack version should round-trip")
+expect(OfflineExplanationStore.load(directory: packDirectory) == packItems, "pack items should round-trip")
+OfflineExplanationStore.clear(directory: packDirectory)
+expect(OfflineExplanationStore.load(directory: packDirectory).isEmpty, "cleared pack should be empty")
+expect(OfflineExplanationStore.version(directory: packDirectory) == nil, "cleared pack should have no version")
+
 // Guard against a truncated or silently drifted bundled edition. If this check
 // fails after an intentional content update, review the text and update counts.
 let bundledEditionURL = URL(fileURLWithPath: "../App/Resources/world_english_bible.json")

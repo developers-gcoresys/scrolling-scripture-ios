@@ -19,6 +19,8 @@ final class ProManager: NSObject, ObservableObject {
     @Published private(set) var yearlyPrice: String?
     @Published private(set) var signedInEmail: String?
     @Published private(set) var busy = false
+    @Published private(set) var offlinePackVersion: Int?
+    @Published private(set) var offlinePackCount = 0
     @Published private(set) var configured = FirebaseRuntime.isConfigured
     @Published var message: String?
 
@@ -61,6 +63,7 @@ final class ProManager: NSObject, ObservableObject {
             }
         }
         Task { await loadProducts() }
+        refreshOfflinePackInfo()
     }
 
     func loadProducts() async {
@@ -233,6 +236,56 @@ final class ProManager: NSObject, ObservableObject {
     func manageSubscriptions() {
         guard let url = URL(string: "https://apps.apple.com/account/subscriptions") else { return }
         UIApplication.shared.open(url)
+    }
+
+    func refreshOfflinePackInfo() {
+        offlinePackVersion = OfflineExplanationStore.version()
+        offlinePackCount = OfflineExplanationStore.load().count
+    }
+
+    /// Downloads the curated Pro explanation pack and keeps it in private app
+    /// storage. The backend returns an empty pack until one has been published.
+    func downloadExplanationPack() async {
+        guard configured, Auth.auth().currentUser != nil else {
+            message = "Sign in with Pro to download offline explanations."
+            return
+        }
+        busy = true
+        defer { busy = false }
+        do {
+            let result = try await functions().httpsCallable("downloadProExplanationPack").call(["appId": appId])
+            guard let dictionary = result.data as? [String: Any] else {
+                message = "The offline explanation pack was not available."
+                return
+            }
+            guard let packVersion = (dictionary["packVersion"] as? NSNumber)?.intValue else {
+                message = "No offline explanation pack is available yet."
+                return
+            }
+            let rawItems = dictionary["items"] as? [[String: Any]] ?? []
+            let items = rawItems.compactMap { item -> OfflineExplanation? in
+                guard let reference = item["reference"] as? String,
+                      let explanation = item["explanation"] as? String,
+                      !reference.isEmpty, !explanation.isEmpty else { return nil }
+                let citations = item["citations"] as? [String] ?? []
+                return OfflineExplanation(reference: reference, explanation: explanation, citations: citations)
+            }
+            guard !items.isEmpty else {
+                message = "No offline explanation pack is available yet."
+                return
+            }
+            try OfflineExplanationStore.save(items, appId: appId, packVersion: packVersion)
+            refreshOfflinePackInfo()
+            message = "Offline explanations saved (\(items.count))."
+        } catch {
+            message = "Offline explanations could not be downloaded. Check your connection and try again."
+        }
+    }
+
+    func clearOfflineExplanations() {
+        OfflineExplanationStore.clear()
+        refreshOfflinePackInfo()
+        message = "Offline explanations removed."
     }
 
     private func syncCurrentEntitlements() async {
