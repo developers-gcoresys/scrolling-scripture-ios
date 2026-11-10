@@ -74,8 +74,9 @@ Apple and App Attest will not work.
 2. Download `GoogleService-Info.plist` into `App/Resources/` (gitignored).
 3. Add the reversed client ID from that plist as a URL scheme in `App/Info.plist`,
    replacing `REPLACE_WITH_REVERSED_CLIENT_ID`.
-4. Set the Firebase App ID as `FIREBASE_APP_ID_BIBLE` in the backend deployment
-   (the backend also serves Android, so this env var is shared).
+4. Set `FIREBASE_APP_ID_BIBLE` in the backend deployment to the Android and
+   iOS Firebase App IDs as a comma-separated value (the two platforms are
+   separate Firebase registrations).
 5. Enable Google sign-in in Firebase Authentication, and enable the Sign in with
    Apple provider. Add the Apple team/bundle configuration in Firebase.
 6. Enable App Check for the iOS app. Release builds use App Attest; debug builds
