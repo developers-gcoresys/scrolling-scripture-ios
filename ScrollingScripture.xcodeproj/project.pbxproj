@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16C572201B4394944AE9DB41 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = DAEA3AC77B256D5B50FD867D /* PrivacyInfo.xcprivacy */; };
 		1B68985A6756F004BC7FE287 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 774A281075CE9E42E409DFD1 /* GoogleMobileAds */; };
 		35571B4B3D56738CA5872052 /* ScrollingBibleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B0EA1398C89455A54271D4 /* ScrollingBibleApp.swift */; };
 		376DC625ED8FBFC72D7C75E1 /* FirebaseRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C53B3787F453B39C3C2D9DA /* FirebaseRuntime.swift */; };
@@ -42,6 +43,7 @@
 		C24A3450B6A8B1CEABED44C2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB44BD7DC76C15777922E19E /* ATTRIBUTION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ATTRIBUTION.md; sourceTree = "<group>"; };
 		D2DBC39A78D8E99C73459EB5 /* ScriptureCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ScriptureCore; path = ScriptureCore; sourceTree = SOURCE_ROOT; };
+		DAEA3AC77B256D5B50FD867D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		E35B1260A64E968C0F0CD8EF /* world_english_bible.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = world_english_bible.json; sourceTree = "<group>"; };
 		F63CB8D3C00D34E617BB261A /* LibraryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 				0F388E3034200EFB9489562E /* Assets.xcassets */,
 				CB44BD7DC76C15777922E19E /* ATTRIBUTION.md */,
 				AB24160F15158814FBD8EF4E /* Configuration.storekit */,
+				DAEA3AC77B256D5B50FD867D /* PrivacyInfo.xcprivacy */,
 				E35B1260A64E968C0F0CD8EF /* world_english_bible.json */,
 			);
 			path = Resources;
@@ -203,6 +206,7 @@
 				83C3F906815E9D3FB9BD641B /* ATTRIBUTION.md in Resources */,
 				FE32EE4AC0F37C62E24A81B7 /* Assets.xcassets in Resources */,
 				8201218B56BD1D1AA1C363D6 /* Configuration.storekit in Resources */,
+				16C572201B4394944AE9DB41 /* PrivacyInfo.xcprivacy in Resources */,
 				71DFDF97D104EF7B48DD89B4 /* world_english_bible.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
